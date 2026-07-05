@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://xiaoyaoluozi.github.io/towayclub-homepage/sitemap.xml
+
+# 主要爬虫
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yisouspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
