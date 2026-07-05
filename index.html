@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="突围俱乐部 Toway Club - 深圳拥抱式综合公益服务平台，拥有读书、户外、美食、电影、交友、技术、瑜伽、英语等兴趣模块，助你突破圈子和个人局限。">
+    <meta name="keywords" content="突围俱乐部, towayclub, 深圳社群, 深圳活动, 读书会, 户外, 交友, 心灵沙龙, 南山">
+    <title>突围俱乐部 | Toway Club</title>
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #fafafa;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,107,107,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(78,205,196,0.08) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(40px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero-logo {
+            font-size: 60px;
+            font-weight: 800;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        .hero-logo span { color: #ff6b6b; }
+        .hero-sub {
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        .hero-tagline {
+            font-size: 18px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+        }
+        .hero-slogan {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        .hero-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hero-cta {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: #ff6b6b;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .hero-cta:hover { background: #e55a5a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,107,0.3); }
+
+        /* About */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 50px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 16px;
+        }
+        .about-text strong { color: #1a1a2e; }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .stat-num {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ff6b6b;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        /* Values */
+        .values-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .values-bg .section-title { color: #fff; }
+        .values-bg .section-subtitle { color: rgba(255,255,255,0.5); }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .value-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .value-card h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .value-card p {
+            color: rgba(255,255,255,0.65);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Modules */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .module-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+        .module-item:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); transform: translateY(-3px); }
+        .module-icon { font-size: 36px; display: block; margin-bottom: 10px; }
+        .module-item h4 { font-size: 16px; color: #1a1a2e; margin-bottom: 6px; }
+        .module-item p { font-size: 13px; color: #999; }
+
+        /* Timeline */
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #eee;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content {
+            width: 45%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 2px #ff6b6b;
+        }
+        .timeline-content h4 {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .timeline-content h3 { font-size: 18px; margin-bottom: 10px; color: #1a1a2e; }
+        .timeline-content p { font-size: 14px; color: #666; line-height: 1.7; }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .contact-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+        }
+        .contact-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+        .contact-card h4 { font-size: 16px; color: #1a1a2e; margin-bottom: 8px; }
+        .contact-card p { font-size: 14px; color: #666; }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+        .footer p { margin-bottom: 8px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 20px 50px; }
+            .hero-logo { font-size: 40px; letter-spacing: 4px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .values-grid, .contact-grid { grid-template-columns: 1fr; }
+            .modules-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; }
+            .timeline-content { width: calc(100% - 50px); margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .modules-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-stats { grid-template-columns: 1fr; }
+        }
+
+        /* Fade In */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-logo">突围<span>Club</span></div>
+        <div class="hero-sub">打通生活 · 突破圈层</div>
+        <div class="hero-tagline">Toway Club</div>
+        <div class="hero-slogan">你的第三空间</div>
+        <p class="hero-desc">
+            一个拥抱式的综合公益服务平台。<br>
+            帮助你突破现有圈子和个人能力的局限性，<br>
+            打造除工作、家庭外最有价值的第三空间。
+        </p>
+        <a href="#contact" class="hero-cta">加入突围</a>
+    </div>
+</section>
+
+<!-- ============= ABOUT ============= -->
+<section class="section" id="about">
+    <h2 class="section-title">关于突围</h2>
+    <p class="section-subtitle">Toway · 让生活更有温度</p>
+    <div class="about-grid">
+        <div class="about-text">
+            <p><strong>突围俱乐部</strong> 创立于 2014 年，由一群不甘于现状的深圳青年发起，至今已走过十余年。</p>
+            <p>我们相信每个人都需要一个<strong>「第三空间」</strong>——它不属于工作，也不属于家庭，而是一个可以卸下伪装、做回自己的地方。</p>
+            <p>在这里，你可以：</p>
+            <p>📖 参加读书会，和有趣的人聊深度的话题<br>
+            🏔️ 周末去爬山徒步，呼吸新鲜空气<br>
+            🍳 参与突围厨房，一起做饭聊天<br>
+            🏸 约一场羽毛球，出出汗交朋友<br>
+            🎬 约场电影，聊聊观后感<br>
+            🧘 练一场瑜伽，身心放松</p>
+            <p>十多年来，我们举办了数百场线下活动，链接了上万人。有人在这里找到了朋友，有人找到了伴侣，有人找到了事业伙伴，有人找到了更好的自己。</p>
+        </div>
+        <div class="about-stats">
+            <div class="stat-card">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">年社群运营</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">300+</div>
+                <div class="stat-label">场线下活动</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">兴趣模块</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">10000+</div>
+                <div class="stat-label">链接人数</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= VALUES ============= -->
+<section class="values-bg" style="padding: 80px 20px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <h2 class="section-title">突围理念</h2>
+        <p class="section-subtitle">不只是活动，更是一种生活方式</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">🤝</span>
+                <h3>拥抱式公益</h3>
+                <p>不以盈利为目的，以「拥抱」为核心——拥抱陌生人、拥抱未知、拥抱每一个想突破的自己。</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🌉</span>
+                <h3>打破信息壁垒</h3>
+                <p>在深圳这座快速流动的城市里，突围提供高质量的信息链接和人脉对接，让机会流动起来。</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🧭</span>
+                <h3>突破个人局限</h3>
+                <p>每个人都有自己的舒适区。突围鼓励跨出那一步——去认识不同行业的人，去经历未曾经历的事。</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🏠</span>
+                <h3>家的归属感</h3>
+                <p>让孤独的深圳人找到「家」的感觉。除夕夜一起包饺子，周末一起爬山，累了有人听你说话。</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">♾️</span>
+                <h3>包容并存</h3>
+                <p>不设限，不贴标签。无论你是什么背景、什么行业，只要你愿意来，这里就欢迎你。</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🌱</span>
+                <h3>持续进化</h3>
+                <p>十年来不断摸索前进、质疑挑战。从最初的十几个人的小群体，到如今上千人的大家庭。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= MODULES ============= -->
+<section class="section" id="modules">
+    <h2 class="section-title">兴趣模块</h2>
+    <p class="section-subtitle">总有一样适合你</p>
+    <div class="modules-grid">
+        <div class="module-item">
+            <span class="module-icon">📚</span>
+            <h4>读书会</h4>
+            <p>以书会友，深度交流</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🏔️</span>
+            <h4>户外</h4>
+            <p>徒步、爬山、旅行</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🍳</span>
+            <h4>突围厨房</h4>
+            <p>一起做饭，分享美食</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🎬</span>
+            <h4>电影</h4>
+            <p>好片共赏，深度交流</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">💑</span>
+            <h4>交友</h4>
+            <p>突破圈子，遇见有趣</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">💻</span>
+            <h4>技术</h4>
+            <p>技术分享，跨界交流</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🧘</span>
+            <h4>瑜伽</h4>
+            <p>身心平衡，向内探索</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🏸</span>
+            <h4>羽毛球</h4>
+            <p>每周一约，运动社交</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🗣️</span>
+            <h4>英语</h4>
+            <p>英语角，练习口语</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">👔</span>
+            <h4>职场</h4>
+            <p>简历、跳槽、职业规划</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🧠</span>
+            <h4>心灵沙龙</h4>
+            <p>心理成长，情感陪伴</p>
+        </div>
+        <div class="module-item">
+            <span class="module-icon">🏕️</span>
+            <h4>突围之家</h4>
+            <p>大鹏白露民宿，线下聚点</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============= TIMELINE ============= -->
+<section class="values-bg" style="padding: 80px 20px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <h2 class="section-title">突围足迹</h2>
+        <p class="section-subtitle">十年脚步，一路向前</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2014</h4>
+                    <h3>突围诞生</h3>
+                    <p>一群不甘于现状的深圳青年发起突围俱乐部。从最初的夜爬南山开始，一周一次的约定，慢慢聚起了第一批铁粉。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2015-2017</h4>
+                    <h3>快速发展</h3>
+                    <p>读书会、户外、美食、交友、电影等多个兴趣模块陆续成型。搜狐号文章开始被广泛传播，影响力不断扩大。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2018</h4>
+                    <h3>突围之家</h3>
+                    <p>大鹏白露民宿成为「突围之家」，年会、除夕年夜饭、团建都在这里。有了实体的归属地。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2019-2023</h4>
+                    <h3>深耕内容</h3>
+                    <p>持续运营公众号、搜狐号、活动行。职场沙龙、心灵成长、情感陪伴等新模块上线，活动更加多元。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2024 - 今</h4>
+                    <h3>焕新出发</h3>
+                    <p>粉丝突破 3000，每周活动常态化。心灵沙龙走进南山图书馆，线上+线下双线并行，服务更多深圳人。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============= CONTACT ============= -->
+<section class="section" id="contact">
+    <h2 class="section-title">找到突围</h2>
+    <p class="section-subtitle">和我们一起，突破生活的边界</p>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <span class="contact-icon">💬</span>
+            <h4>微信公众号</h4>
+            <p>突围俱乐部（towayclub）</p>
+            <p style="font-size: 12px; color: #999;">长按识别关注 · 活动早知道</p>
+        </div>
+        <div class="contact-card">
+            <span class="contact-icon">📧</span>
+            <h4>联系邮箱</h4>
+            <p>toway·club@qq.com</p>
+            <p style="font-size: 12px; color: #999;">合作 · 投稿 · 加入</p>
+        </div>
+        <div class="contact-card">
+            <span class="contact-icon">🌐</span>
+            <h4>更多渠道</h4>
+            <p>微博 @突围俱乐部</p>
+            <p>搜狐号 · 活动行同步更新</p>
+            <p style="font-size: 12px; color: #999;">找到最适合你的方式</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============= SEARCH ENGINE OPTIMIZATION SIGNALS ============= -->
+<!--
+    结构化数据 - 帮助搜索引擎更好地理解和展示突围俱乐部信息
+-->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "突围俱乐部",
+    "alternateName": "Toway Club",
+    "description": "深圳拥抱式综合公益服务平台，拥有读书、户外、美食、电影、交友、技术、瑜伽、英语等兴趣模块，通过举办高质量的线下活动构建高效率的信息化平台。",
+    "url": "https://towayclub.org",
+    "email": "toway.club@qq.com",
+    "areaServed": "深圳",
+    "foundingDate": "2014",
+    "knowsAbout": ["读书会", "户外活动", "美食", "电影", "交友", "技术分享", "瑜伽", "英语", "羽毛球", "心灵沙龙", "职场发展"]
+}
+</script>
+
+<!-- ============= FOOTER ============= -->
+<div class="footer">
+    <p>突围俱乐部 · Toway Club</p>
+    <p>深圳青年拥抱式综合公益服务平台</p>
+    <p>突围，突破生活的边界</p>
+    <p style="margin-top: 15px; font-size: 12px;">© 2024-2026 突围俱乐部 | Designed with ❤️</p>
+</div>
+
+<script>
+    // Smooth fade-in on scroll
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.value-card, .module-item, .contact-card, .stat-card, .timeline-content').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
